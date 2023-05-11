@@ -4,6 +4,7 @@ import AppBar from './AppBar';
 import RepositoryList from './RepositoryList';
 import SignInForm from './SignInForm';
 import { useSignin } from '../hooks/useSignIn';
+import { useAccessToken } from '../hooks/useAccessToken';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,7 @@ const styles = StyleSheet.create({
 
 const Main = () => {
   const [signIn] = useSignin();
+  const accessToken = useAccessToken();
   const handleLogin = async (values) => {
     const { username, password } = values;
     try {
@@ -39,9 +41,18 @@ const Main = () => {
     <View style={[styles.container, styles.fontFamily, styles.backgroundColor]}>
       <AppBar />
       <Routes>
-        <Route path="/" element={<RepositoryList />} exact />
-        <Route path='/signin' element={<SignInForm handleLogin={handleLogin} />} exact />
-        <Route path="*" element={<Navigate to="/" replace />} />
+        {accessToken &&
+          <>
+            <Route path='/' element={<RepositoryList />} exact />
+            <Route path='*' element={<Navigate to='/' replace />} />
+          </>
+        }
+        {!accessToken &&
+          <>
+            <Route path='/signin' element={<SignInForm handleLogin={handleLogin} />} exact />
+            <Route path='*' element={<Navigate to='/signin' replace />} />
+          </>
+        }
       </Routes>
     </View>
   );
