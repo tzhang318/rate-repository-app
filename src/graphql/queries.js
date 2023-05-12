@@ -5,6 +5,7 @@ query {
   repositories {
     edges {
       node {
+        id
         description
         fullName
         language
@@ -15,6 +16,22 @@ query {
         stargazersCount
       }
     }
+  }
+}`;
+
+export const GET_REPOSITORY = gql`
+query ($repositoryId: ID!) {
+  repository(id: $repositoryId) {
+    id
+    fullName
+    forksCount
+    description
+    language
+    ownerAvatarUrl
+    ratingAverage
+    reviewCount
+    stargazersCount
+    url
   }
 }`;
 

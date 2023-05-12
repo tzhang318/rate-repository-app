@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import * as Linking from 'expo-linking';
 import { Avatar } from './Avatar';
 import { Separator, VerticalSeparator } from './ItemSeparator';
 import { RepoStats } from './RepoStats';
@@ -9,7 +10,8 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: 'wheat',
     paddingTop: 10,
-    paddingLeft: 10
+    paddingLeft: 5,
+    paddingRight: 5
   },
   header: {
     flexDirection: 'row',
@@ -43,6 +45,21 @@ const styles = StyleSheet.create({
   stats: {
     flexDirection: 'row',
     justifyContent: 'space-around'
+  },
+  button: {
+    backgroundColor: theme.colors.primary,
+    width: '100%',
+    paddingTop: 10,
+    paddingBottom: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 4,
+    marginBottom: 10
+  },
+  buttonText: {
+    fontSize: theme.fontSizes.appBar,
+    fontWeight: theme.fontWeights.bold,
+    color: theme.colors.appBarText
   }
 });
 
@@ -54,9 +71,10 @@ export const RepositoryItem = ({ repo }) => {
     stargazersCount,
     ratingAverage,
     reviewCount,
-    forksCount
+    forksCount,
+    url
   } = repo;
-
+  
   const getCount = (count) => {
     if (count / 1000 > 1) {
       const temp = Math.round(count/100);
@@ -64,6 +82,10 @@ export const RepositoryItem = ({ repo }) => {
     }
     return count;
   }
+
+  const handlePress = () => {
+    Linking.openURL(`${url}`);
+  };
 
   return (
     <View style={styles.main}>
@@ -86,6 +108,11 @@ export const RepositoryItem = ({ repo }) => {
         <RepoStats label={'Rating'} counts={getCount(ratingAverage)} />
       </View>
       <Separator />
+      {url &&
+        <Pressable style={styles.button} onPress={handlePress}>
+          <Text style={styles.buttonText}>Open in GitHub</Text>
+        </Pressable>
+      }
     </View>
   );
 };

@@ -6,6 +6,7 @@ import SignInForm from './SignInForm';
 import { useSignin } from '../hooks/useSignIn';
 import { useAccessToken } from '../hooks/useAccessToken';
 import { Home } from './Home';
+import { RepositoryItemContainer } from './RepositoryItemContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -45,6 +46,7 @@ const Main = () => {
         {accessToken &&
           <>
             <Route path='/' element={<RepositoryList />} exact />
+            <Route path='/repo/:id' element={<RepositoryItemContainer />} exact />
             <Route path='*' element={<Navigate to='/' replace />} />
           </>
         }

@@ -1,4 +1,5 @@
-import { SafeAreaView, FlatList, StyleSheet, Text } from 'react-native';
+import { SafeAreaView, FlatList, StyleSheet, Text, Pressable } from 'react-native';
+import { useNavigate } from 'react-router-native';
 import { useQuery } from '@apollo/client';
 import { RepositoryItem } from './RepositoryItem';
 import { Separator } from './ItemSeparator';
@@ -22,6 +23,7 @@ const RepositoryList = () => {
     // Other options
   });
   const accessToken = useAccessToken();
+  const navigate = useNavigate();
 
   if (!accessToken) {
     return <Text>no token</Text>
@@ -35,12 +37,21 @@ const RepositoryList = () => {
     ? data.repositories.edges.map(edge => edge.node)
     : [];
 
+  const onItemPress = id => {
+    console.log(' ---- id: ', id);
+    navigate(`/repo/${id}`, { replace: true })
+  };
+
   return (
     <SafeAreaView style={styles.main}>
       <FlatList
         data={repositoryNodes}
         ItemSeparatorComponent={Separator}
-        renderItem={({item}) => <RepositoryItem repo={item} />}
+        renderItem={({item}) => (
+          <Pressable onPress={()=>onItemPress(item.id)}>
+            <RepositoryItem repo={item} />
+          </Pressable>
+        )}
         keyExtractor={repo => repo.fullName}
       />
     </SafeAreaView>
