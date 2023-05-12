@@ -2,7 +2,8 @@ import { View, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   separator: {
-    height: 10
+    height: 10,
+    backgroundColor: 'white'
   },
   verticalSeparator: {
     width: 10

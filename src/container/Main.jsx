@@ -1,12 +1,12 @@
 import { StyleSheet, View, Platform } from 'react-native';
 import { Route, Routes, Navigate } from 'react-router-native';
-import AppBar from './AppBar';
-import RepositoryList from './RepositoryList';
-import SignInForm from './SignInForm';
+import AppBar from '../components/appBar/AppBar';
+import RepositoryList from '../components/repo/RepositoryList';
+import SignInForm from '../components/SignInForm';
 import { useSignin } from '../hooks/useSignIn';
 import { useAccessToken } from '../hooks/useAccessToken';
 import { Home } from './Home';
-import { RepositoryItemContainer } from './RepositoryItemContainer';
+import { RepositoryItemContainer } from '../components/repo/RepositoryItemContainer';
 
 const styles = StyleSheet.create({
   container: {

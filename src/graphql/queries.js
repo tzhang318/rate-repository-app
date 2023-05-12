@@ -32,6 +32,20 @@ query ($repositoryId: ID!) {
     reviewCount
     stargazersCount
     url
+    reviews {
+      edges {
+        node {
+          createdAt
+          id
+          rating
+          text
+          user {
+            username
+            id
+          }
+        }
+      }
+    }
   }
 }`;
 

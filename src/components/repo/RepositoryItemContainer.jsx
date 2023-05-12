@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-native';
 import { Text } from 'react-native';
 import { useQuery } from '@apollo/client';
-import { GET_REPOSITORY } from '../graphql/queries';
+import { GET_REPOSITORY } from '../../graphql/queries';
 import { RepositoryItem } from './RepositoryItem';
 
 export const RepositoryItemContainer = () => {

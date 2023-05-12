@@ -2,12 +2,12 @@ import { SafeAreaView, FlatList, StyleSheet, Text, Pressable } from 'react-nativ
 import { useNavigate } from 'react-router-native';
 import { useQuery } from '@apollo/client';
 import { RepositoryItem } from './RepositoryItem';
-import { Separator } from './ItemSeparator';
+import { Separator } from '../ItemSeparator';
 // import useRepositories from '../hooks/useRepositories';
-import { GET_REPOSITORIES } from '../graphql/queries';
+import { GET_REPOSITORIES } from '../../graphql/queries';
 
-import theme from '../theme';
-import { useAccessToken } from '../hooks/useAccessToken';
+import theme from '../../theme';
+import { useAccessToken } from '../../hooks/useAccessToken';
 
 const styles = StyleSheet.create({
   main: {

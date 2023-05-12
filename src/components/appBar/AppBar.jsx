@@ -4,10 +4,10 @@ import { useApolloClient } from '@apollo/client';
 import Constants from 'expo-constants';
 import { AppBarTab } from './AppBarTab';
 import { useQuery } from '@apollo/client';
-import { GET_USER } from '../graphql/queries';
+import { GET_USER } from '../../graphql/queries';
 
-import theme from '../theme';
-import { useAuthStorage } from '../hooks/useAuthStorage';
+import theme from '../../theme';
+import { useAuthStorage } from '../../hooks/useAuthStorage';
 
 const styles = StyleSheet.create({
   container: {

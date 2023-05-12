@@ -1,7 +1,7 @@
 import { Pressable, Text, StyleSheet } from 'react-native';
 import { Link } from "react-router-native";
 
-import theme from '../theme';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   text: {
