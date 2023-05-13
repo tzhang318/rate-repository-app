@@ -6,28 +6,9 @@ import FormikTextInput from '../FormikTextInput';
 import { validateReview } from '../../validation/validateReview';
 import { CREATE_REVIEW } from '../../graphql/queries';
 
-import theme from '../../theme';
+import commonStyles from '../../styles/commonStyle';
 
 const styles = StyleSheet.create({
-  container: {
-    // width: '100%',
-    padding: 10
-  },
-  wide: {
-    // width: '100%'
-  },
-  border: {
-    borderWidth: 1,
-    borderRadius: 4
-  },
-  button: {
-    backgroundColor: theme.colors.primary,
-    borderWidth: 0
-  },
-  buttonText: {
-    color: theme.colors.white,
-    fontWeight: theme.fontWeights.bold
-  },
   item: {
     marginTop: 10,
     height: 50,
@@ -36,8 +17,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export const ReviewForm = props => {
-  const [mutate, result] = useMutation(CREATE_REVIEW);
+export const ReviewForm = () => {
+  const [mutate] = useMutation(CREATE_REVIEW);
   const navigate = useNavigate();
   const initialValues = {
     ownerName: '',
@@ -72,34 +53,34 @@ export const ReviewForm = props => {
     >
       {
         ({ handleSubmit }) => (
-          <View style={styles.container}>
+          <View style={commonStyles.container}>
             <FormikTextInput
               name='ownerName'
               placeholder='ownerName'
-              style={[styles.border, styles.wide, styles.item]}
+              style={[commonStyles.border, styles.item]}
             />
             <FormikTextInput
               name='repositoryName'
               placeholder='repositoryName'
-              style={[styles.border, styles.wide, styles.item]}
+              style={[commonStyles.border, styles.item]}
             />
             <FormikTextInput
               name='rating'
               placeholder='rating'
               keyboardType='numeric'
-              style={[styles.border, styles.wide, styles.item]}
+              style={[commonStyles.border, styles.item]}
             />
             <FormikTextInput
               name='text'
               placeholder='text'
-              style={[styles.border, styles.wide, styles.item]}
+              style={[commonStyles.border, styles.item]}
               multiline
             />
             <Pressable
               onPress={handleSubmit}
-              style={[styles.border, styles.wide, styles.button, styles.item]}
+              style={[commonStyles.border, commonStyles.primaryButton, styles.item]}
             >
-              <Text style={styles.buttonText}>Post</Text>
+              <Text style={commonStyles.primaryButtonText}>Post</Text>
             </Pressable>
           </View>
         )

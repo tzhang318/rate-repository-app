@@ -1,25 +1,12 @@
 import { Formik } from 'formik';
 import { View, Pressable, Text, StyleSheet } from 'react-native'; 
-import FormikTextInput from './FormikTextInput';
-import { validateSignin } from '../validation/validateSignin';
-
-import theme from '../theme';
+import FormikTextInput from '../FormikTextInput';
+import { validateSignin } from '../../validation/validateSignin';
+import commonStyles from '../../styles/commonStyle';
 
 const styles = StyleSheet.create({
   wide: {
     width: '100%'
-  },
-  border: {
-    borderWidth: 1,
-    borderRadius: 4
-  },
-  button: {
-    backgroundColor: theme.colors.primary,
-    borderWidth: 0
-  },
-  buttonText: {
-    color: theme.colors.white,
-    fontWeight: theme.fontWeights.bold
   },
   view: {
     paddingStart: 5,
@@ -50,19 +37,19 @@ const SignInForm = props => {
           <FormikTextInput
             name='username'
             placeholder='username'
-            style={[styles.border, styles.wide, styles.item]}
+            style={[commonStyles.border, styles.wide, styles.item]}
           />
           <FormikTextInput
             name='password'
             placeholder='password'
             secureTextEntry
-            style={[styles.border, styles.wide, styles.item]}
+            style={[commonStyles.border, styles.wide, styles.item]}
           />
           <Pressable
             onPress={handleSubmit}
-            style={[styles.border, styles.wide, styles.button, styles.item]}
+            style={[commonStyles.border, styles.wide, commonStyles.primaryButton, styles.item]}
           >
-            <Text style={styles.buttonText}>Sign in</Text>
+            <Text style={commonStyles.primaryButtonText}>Sign in</Text>
           </Pressable>
         </View>
       )}

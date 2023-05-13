@@ -2,7 +2,7 @@ import * as yup from 'yup';
 
 export const validateReview = yup.object().shape({
   ownerName: yup.string()
-    .min(3, 'minimal 3 letters for username')
+    .min(3, 'minimal 3 letters for owner name')
     .required('review owner name is required'),
   repositoryName: yup.string()
     .required('repository name is required'),
