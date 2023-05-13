@@ -28,7 +28,7 @@ export const SignUpForm = () => {
 
   const signUp = async (values) => {
     try {
-      const { data } = await mutate({
+      await mutate({
         variables: {
           user: {
             username: values.username,
