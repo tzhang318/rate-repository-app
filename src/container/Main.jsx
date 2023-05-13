@@ -7,6 +7,7 @@ import { useSignin } from '../hooks/useSignIn';
 import { useAccessToken } from '../hooks/useAccessToken';
 import { Home } from './Home';
 import { RepositoryItemContainer } from '../components/repo/RepositoryItemContainer';
+import { ReviewForm } from '../components/reviews/ReviewForm';
 
 const styles = StyleSheet.create({
   container: {
@@ -47,6 +48,7 @@ const Main = () => {
           <>
             <Route path='/' element={<RepositoryList />} exact />
             <Route path='/repo/:id' element={<RepositoryItemContainer />} exact />
+            <Route path='/createreview' element={<ReviewForm />} exact />
             <Route path='*' element={<Navigate to='/' replace />} />
           </>
         }

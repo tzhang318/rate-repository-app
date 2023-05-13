@@ -104,9 +104,9 @@ export const RepositoryItem = ({ repo }) => {
           <View style={styles.headerText}>
             <Text style={styles.name}>{fullName}</Text>
             <Text style={styles.description}>{description}</Text>
-            <View style={styles.languageContainer}>
+            {language && <View style={styles.languageContainer}>
               <Text style={styles.language}>{language}</Text>
-            </View>
+            </View>}
           </View>
         </View>
         <View style={styles.stats}>

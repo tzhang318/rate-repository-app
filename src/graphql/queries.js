@@ -101,3 +101,19 @@ query {
     username
   }
 }`;
+
+export const CREATE_REVIEW = gql`
+mutation ($review: CreateReviewInput) {
+  createReview(review: $review) {
+    rating
+    repository {
+      id
+    }
+    repositoryId
+    text
+    user {
+      username
+    }
+    userId
+  }
+}`;

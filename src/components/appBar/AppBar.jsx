@@ -52,6 +52,7 @@ const AppBar = () => {
     <View style={styles.container}>
       <ScrollView horizontal>
         <AppBarTab tabName='Repositories' url=''/>
+        <AppBarTab tabName='Create a review' url='createreview' />
         {data?.me ?
           <Pressable onPress={onPress}>
             <Text style={styles.text}>Signout</Text>

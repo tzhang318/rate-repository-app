@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
 });
 
 const FormikTextInput = props => {
+  console.log(' ******* props.keyboardType: ', props.keyboardType)
   const [field, meta, helpers] = useField(props.name);
   const showError = meta.touched && meta.error;
   const borderStyle = [...props.style, styles.input, showError ? styles.borderError : styles.borderStyle];

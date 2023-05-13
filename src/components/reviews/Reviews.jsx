@@ -10,7 +10,7 @@ export const Reviews = ({ reviews }) => {
       renderItem={
         ({item}) => <ReviewItem review={item} />
       }
-      keyExtractor={review => review.id}
+      keyExtractor={review => review.node.id}
     />
   );
 };

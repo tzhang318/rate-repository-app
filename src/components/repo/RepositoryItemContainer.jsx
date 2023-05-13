@@ -7,6 +7,7 @@ import { RepositoryItem } from './RepositoryItem';
 export const RepositoryItemContainer = () => {
   const params = useParams();
 
+  // eslint-disable-next-line no-unused-vars
   const { data, loading, error } = useQuery(GET_REPOSITORY, {
     fetchPolicy: 'cache-and-network',
     variables: { repositoryId: params.id }
@@ -15,9 +16,6 @@ export const RepositoryItemContainer = () => {
   if (loading) {
     return <Text>loading</Text>
   }
-
-
-  console.log('** *** ** repo data: ', data, ' ** error: ', error);
 
   return (
     <RepositoryItem repo={data.repository} />
