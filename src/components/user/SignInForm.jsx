@@ -9,8 +9,10 @@ const styles = StyleSheet.create({
     width: '100%'
   },
   view: {
-    paddingStart: 5,
-    paddingEnd: 5
+    paddingStart: 10,
+    paddingEnd: 10,
+    height: '100%',
+    backgroundColor: 'wheat'
   },
   item: {
     marginTop: 10,
@@ -47,7 +49,7 @@ const SignInForm = props => {
           />
           <Pressable
             onPress={handleSubmit}
-            style={[commonStyles.border, styles.wide, commonStyles.primaryButton, styles.item]}
+            style={[styles.wide, commonStyles.primaryButton, styles.item]}
           >
             <Text style={commonStyles.primaryButtonText}>Sign in</Text>
           </Pressable>

@@ -1,9 +1,10 @@
 import { View, StyleSheet } from 'react-native';
+import theme from '../../theme';
 
 const styles = StyleSheet.create({
   separator: {
     height: 10,
-    backgroundColor: 'white'
+    backgroundColor: theme.colors.mainPage
   },
   verticalSeparator: {
     width: 10

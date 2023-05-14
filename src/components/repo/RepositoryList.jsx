@@ -15,19 +15,12 @@ import { RepositoryItem } from './RepositoryItem';
 import { Separator } from '../common/ItemSeparator';
 import { useRepositories } from '../../hooks/useRepositories';
 import { SortPicker } from '../common/SortPicker';
-
-import theme from '../../theme';
 import { useAccessToken } from '../../hooks/useAccessToken';
 
+import theme from '../../theme';
+import commonStyles from '../../styles/commonStyle';
+
 const styles = StyleSheet.create({
-  main: {
-    backgroundColor: theme.colors.mainPage
-  },
-  loading: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '80%'
-  },
   header: {
     flex: 1,
     backgroundColor: theme.colors.white
@@ -77,7 +70,7 @@ const RepositoryList = () => {
   };
 
   if (loading) {
-    return <ActivityIndicator style={styles.loading} animating={true} color={theme.colors.primary}/>;
+    return <ActivityIndicator style={commonStyles.loading} animating={true} />;
   }
 
   const repositoryNodes = data.repositories
@@ -89,7 +82,7 @@ const RepositoryList = () => {
   };
 
   return (
-    <SafeAreaView style={styles.main}>
+    <SafeAreaView>
       <FlatList
         ListHeaderComponent={
           <View style={styles.header}>

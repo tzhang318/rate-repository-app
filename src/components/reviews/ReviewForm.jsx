@@ -9,6 +9,12 @@ import { CREATE_REVIEW } from '../../graphql/queries';
 import commonStyles from '../../styles/commonStyle';
 
 const styles = StyleSheet.create({
+  form: {
+    backgroundColor: 'wheat',
+    height: '100%',
+    paddingLeft: 10,
+    paddingRight: 10
+  },
   item: {
     marginTop: 10,
     height: 50,
@@ -53,7 +59,7 @@ export const ReviewForm = () => {
     >
       {
         ({ handleSubmit }) => (
-          <View style={commonStyles.container}>
+          <View style={styles.form}>
             <FormikTextInput
               name='ownerName'
               placeholder='ownerName'
@@ -78,7 +84,7 @@ export const ReviewForm = () => {
             />
             <Pressable
               onPress={handleSubmit}
-              style={[commonStyles.border, commonStyles.primaryButton, styles.item]}
+              style={[commonStyles.primaryButton, styles.item]}
             >
               <Text style={commonStyles.primaryButtonText}>Post</Text>
             </Pressable>

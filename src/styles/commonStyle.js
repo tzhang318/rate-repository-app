@@ -4,7 +4,8 @@ import theme from '../theme';
 
 const commonStyles = StyleSheet.create({
   container: {
-    padding: 10
+    padding: 10,
+    backgroundColor: theme.colors.mainPage
   },
   border: {
     borderWidth: 1,
@@ -12,11 +13,26 @@ const commonStyles = StyleSheet.create({
   },
   primaryButton: {
     backgroundColor: theme.colors.primary,
-    borderWidth: 0
+    padding: 10,
+    alignItems: 'center',
+    borderRadius: 4,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10
   },
   primaryButtonText: {
     color: theme.colors.white,
-    fontWeight: theme.fontWeights.bold
+    fontWeight: theme.fontWeights.bold,
+    fontSize: theme.fontSizes.button
+  },
+  deleteButton: {
+    backgroundColor: theme.colors.warningRed
+  },
+  loading: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '80%',
+    color: theme.colors.gray
   }
 });
 

@@ -1,9 +1,10 @@
-import { SafeAreaView, View, Text, StyleSheet, Pressable } from 'react-native';
+import { SafeAreaView, View, Text, StyleSheet } from 'react-native';
 import * as Linking from 'expo-linking';
 import { Avatar } from '../common/Avatar';
 import { Separator, VerticalSeparator } from '../common/ItemSeparator';
 import { RepoStats } from './RepoStats';
 import { Reviews } from '../reviews/Reviews';
+import { OpenUrlButton } from '../common/OpenUrlButton';
 
 import theme from '../../theme';
 
@@ -14,6 +15,7 @@ const styles = StyleSheet.create({
   main: {
     backgroundColor: 'wheat',
     paddingTop: 10,
+    paddingBottom: 10,
     width: '100%'
   },
   header: {
@@ -56,10 +58,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     paddingTop: 10,
     paddingBottom: 10,
-    justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 4,
-    marginBottom: 10,
+    marginTop: 10,
     marginLeft: 10,
     marginRight: 10
   },
@@ -116,14 +117,12 @@ export const RepositoryItem = ({ repo }) => {
           <RepoStats label={'Rating'} counts={getCount(ratingAverage)} />
         </View>
         {url &&
-          <Pressable style={styles.button} onPress={handlePress}>
-            <Text style={styles.buttonText}>Open in GitHub</Text>
-          </Pressable>
+          <OpenUrlButton onPress={handlePress} label='Open in GitHub' />
         }
       </View>
-      <Separator />
-      {reviews &&
+      {reviews?.edges.length > 0  &&
         <View style={styles.main}>
+          <Separator />
           <Reviews reviews={reviews?.edges} />
         </View>
       }

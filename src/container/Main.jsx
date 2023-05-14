@@ -9,11 +9,14 @@ import { Home } from './Home';
 import { RepositoryItemContainer } from '../components/repo/RepositoryItemContainer';
 import { ReviewForm } from '../components/reviews/ReviewForm';
 import { SignUpForm } from '../components/user/SignUpForm';
+import { MyReviewsContainer } from '../components/reviews/MyReviewsContainer';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     flexShrink: 1,
+    backgroundColor: theme.colors.mainPage
   },
   backgroundColor: Platform.select({
     ios: 'aqua',
@@ -50,6 +53,7 @@ const Main = () => {
             <Route path='/' element={<RepositoryList />} exact />
             <Route path='/repo/:id' element={<RepositoryItemContainer />} exact />
             <Route path='/createreview' element={<ReviewForm />} exact />
+            <Route path='/myreviews' element={<MyReviewsContainer ownersView />} exact />
             <Route path='*' element={<Navigate to='/' replace />} />
           </>
         }

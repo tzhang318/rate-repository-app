@@ -14,6 +14,12 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  form: {
+    height: '100%',
+    paddingLeft: 10,
+    paddingRight: 10,
+    backgroundColor: 'wheat'
   }
 });
 
@@ -49,7 +55,7 @@ export const SignUpForm = () => {
       validationSchema={validateUser}
     >
       {({ handleSubmit }) => (
-        <View style={commonStyles.container}>
+        <View style={styles.form}>
           <FormikTextInput
             name='username'
             placeholder='username'
@@ -69,7 +75,7 @@ export const SignUpForm = () => {
           />
           <Pressable
             onPress={handleSubmit}
-            style={[commonStyles.border, commonStyles.primaryButton, styles.item]}
+            style={[commonStyles.primaryButton, styles.item]}
           >
             <Text style={commonStyles.primaryButtonText}>
               Create

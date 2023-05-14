@@ -94,11 +94,26 @@ mutation ($credentials: AuthenticateInput) {
 //   }
 // }
 
-export const GET_USER = gql`
-query {
+export const GET_CURRENT_USER = gql`
+query getCurrentUser($includeReviews: Boolean = false) {
   me {
     id
     username
+    reviews @include(if: $includeReviews) {
+      edges {
+        node {
+          id
+          createdAt
+          rating
+          repositoryId
+          text
+          repository {
+            fullName
+            url
+          }
+        }
+      }
+    }
   }
 }`;
 
@@ -116,4 +131,9 @@ mutation ($review: CreateReviewInput) {
     }
     userId
   }
+}`;
+
+export const DELETE_REVIEW = gql`
+mutation ($deleteReviewId: ID!) {
+  deleteReview(id: $deleteReviewId)
 }`;

@@ -1,8 +1,10 @@
 import { useParams } from 'react-router-native';
-import { Text } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { useQuery } from '@apollo/client';
 import { GET_REPOSITORY } from '../../graphql/queries';
 import { RepositoryItem } from './RepositoryItem';
+
+import commonStyles from '../../styles/commonStyle';
 
 export const RepositoryItemContainer = () => {
   const params = useParams();
@@ -14,7 +16,7 @@ export const RepositoryItemContainer = () => {
   });
 
   if (loading) {
-    return <Text>loading</Text>
+    return <ActivityIndicator style={commonStyles.loading} animating={true} />
   }
 
   return (

@@ -4,7 +4,7 @@ import { useApolloClient } from '@apollo/client';
 import Constants from 'expo-constants';
 import { AppBarTab } from './AppBarTab';
 import { useQuery } from '@apollo/client';
-import { GET_USER } from '../../graphql/queries';
+import { GET_CURRENT_USER } from '../../graphql/queries';
 
 import theme from '../../theme';
 import { useAuthStorage } from '../../hooks/useAuthStorage';
@@ -36,7 +36,7 @@ const AppBar = () => {
   const navigate = useNavigate();
 
   // eslint-disable-next-line no-unused-vars
-  const { data, loading, error } = useQuery(GET_USER);
+  const { data, loading, error } = useQuery(GET_CURRENT_USER);
   if (loading) {
     return <Text style={styles.loadingText}>Loading ...</Text>;
   }
@@ -53,6 +53,7 @@ const AppBar = () => {
       <ScrollView horizontal>
         <AppBarTab tabName='Repositories' url=''/>
         <AppBarTab tabName='Create a review' url='createreview' />
+        <AppBarTab tabName='My reviews' url='myreviews' />
         {data?.me ?
           <Pressable onPress={onPress}>
             <Text style={styles.text}>Sign out</Text>
