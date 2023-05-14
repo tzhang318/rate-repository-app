@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import { View, Pressable, Text, StyleSheet } from 'react-native'; 
-import FormikTextInput from '../FormikTextInput';
+import FormikTextInput from '../common/FormikTextInput';
 import { validateSignin } from '../../validation/validateSignin';
 import commonStyles from '../../styles/commonStyle';
 

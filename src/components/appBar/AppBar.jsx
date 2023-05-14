@@ -55,7 +55,7 @@ const AppBar = () => {
         <AppBarTab tabName='Create a review' url='createreview' />
         {data?.me ?
           <Pressable onPress={onPress}>
-            <Text style={styles.text}>Signout</Text>
+            <Text style={styles.text}>Sign out</Text>
           </Pressable>
           :
           <>

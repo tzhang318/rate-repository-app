@@ -2,7 +2,7 @@ import { View, Pressable, Text, StyleSheet } from 'react-native';
 import { useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-native';
 import { Formik } from 'formik';
-import FormikTextInput from '../FormikTextInput';
+import FormikTextInput from '../common/FormikTextInput';
 import { CREATE_USER } from '../../graphql/queries';
 import { validateUser } from '../../validation/validateUser';
 

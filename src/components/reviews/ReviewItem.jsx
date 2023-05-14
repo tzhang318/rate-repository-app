@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { CircleContent } from '../CircleContent';
+import { CircleContent } from '../common/CircleContent';
 import { formatDate_dateFns } from '../../utils/date';
 
 import theme from '../../theme';

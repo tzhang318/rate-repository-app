@@ -1,8 +1,8 @@
 import { SafeAreaView, View, Text, StyleSheet, Pressable } from 'react-native';
 import * as Linking from 'expo-linking';
-import { Avatar } from '../Avatar';
-import { Separator, VerticalSeparator } from '../ItemSeparator';
-import { RepoStats } from '../RepoStats';
+import { Avatar } from '../common/Avatar';
+import { Separator, VerticalSeparator } from '../common/ItemSeparator';
+import { RepoStats } from './RepoStats';
 import { Reviews } from '../reviews/Reviews';
 
 import theme from '../../theme';

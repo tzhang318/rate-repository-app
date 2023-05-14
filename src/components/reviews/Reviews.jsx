@@ -1,5 +1,5 @@
 import { FlatList } from 'react-native';
-import { Separator } from '../ItemSeparator';
+import { Separator } from '../common/ItemSeparator';
 import { ReviewItem } from './ReviewItem';
 
 export const Reviews = ({ reviews }) => {

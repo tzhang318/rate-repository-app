@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     fontSize: theme.fontSizes.appBar,
     fontWeight: theme.fontWeights.bold,
     paddingLeft: 10,
+    paddingRight: 5,
     paddingBottom: 12
   }
 });
