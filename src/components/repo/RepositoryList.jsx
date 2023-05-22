@@ -10,7 +10,6 @@ import {
   View
 } from 'react-native';
 import { useNavigate } from 'react-router-native';
-import { useDebounce } from 'use-debounce';
 import { RepositoryItem } from './RepositoryItem';
 import { Separator } from '../common/ItemSeparator';
 import { useRepositories } from '../../hooks/useRepositories';
@@ -48,12 +47,31 @@ const RepositoryList = () => {
   const [text, setText] = useState('');
   const [selectedSort, setSelectedSort] = useState(values[0].value);
   // eslint-disable-next-line no-unused-vars
-  const { data, loading, error, refetch } =
-    useRepositories({ orderBy, orderDirection, searchKeyword});
+  const { repositories, loading, error, refetch, fetchMore } =
+    useRepositories({ orderBy, orderDirection, searchKeyword, first: 3 });
 
   const accessToken = useAccessToken();
   const navigate = useNavigate();
-  const [searchKeyword] = useDebounce(text, 500);
+  const [searchKeyword, setSearch] = useState('');
+
+  const handleSearch = inputValue => {
+    setText(inputValue);
+  };
+
+  const onEndReach = () => {
+    console.log('You have reached the end of the list');
+    fetchMore();
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setSearch(text);
+    }, 300);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [text]);
 
   useEffect(() => {
     refetch({ orderBy, orderDirection, searchKeyword });
@@ -73,8 +91,8 @@ const RepositoryList = () => {
     return <ActivityIndicator style={commonStyles.loading} animating={true} />;
   }
 
-  const repositoryNodes = data.repositories
-    ? data.repositories.edges.map(edge => edge.node)
+  const repositoryNodes = repositories
+    ? repositories.edges.map(edge => edge.node)
     : [];
 
   const onItemPress = id => {
@@ -89,8 +107,8 @@ const RepositoryList = () => {
             <TextInput
               style={styles.searchbar}
               placeholder="Search"
-              onChangeText={setText}
-              value={searchKeyword}
+              onChangeText={handleSearch}
+              value={text}
             />
             <SortPicker
               handleSort={handleSort}
@@ -107,6 +125,8 @@ const RepositoryList = () => {
           </Pressable>
         )}
         keyExtractor={repo => repo.fullName}
+        onEndReached={onEndReach}
+        onEndReachedThreshold={0}
       />
     </SafeAreaView>
   );
